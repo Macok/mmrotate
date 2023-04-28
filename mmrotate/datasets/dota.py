@@ -27,10 +27,7 @@ class DOTADataset(BaseDataset):
 
     METAINFO = {
         'classes':
-        ('plane', 'baseball-diamond', 'bridge', 'ground-track-field',
-         'small-vehicle', 'large-vehicle', 'ship', 'tennis-court',
-         'basketball-court', 'storage-tank', 'soccer-ball-field', 'roundabout',
-         'harbor', 'swimming-pool', 'helicopter'),
+        ('board'),
         # palette is a list of color tuples, which is used for visualization.
         'palette': [(165, 42, 42), (189, 183, 107), (0, 255, 0), (255, 0, 0),
                     (138, 43, 226), (255, 128, 0), (255, 0, 255),
