@@ -11,9 +11,9 @@ train_pipeline = [
         type='mmdet.RandomFlip',
         prob=0.75,
         direction=['horizontal', 'vertical', 'diagonal']),
-    dict(type='mmrotate.RandomRotate',
-         prob=1, 
-         angle_range=180),
+    #dict(type='mmrotate.RandomRotate',
+    #     prob=1, 
+    #     angle_range=180),
     dict(type='mmdet.PackDetInputs')
 ]
 val_pipeline = [
