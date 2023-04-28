@@ -6,6 +6,8 @@ from typing import List, Tuple
 from mmengine.dataset import BaseDataset
 
 from mmrotate.registry import DATASETS
+from PIL import Image
+
 
 
 @DATASETS.register_module()
@@ -63,8 +65,11 @@ class DOTADataset(BaseDataset):
                 data_info['file_name'] = img_name
                 img_id = img_name[:-4]
                 data_info['img_id'] = img_id
-                data_info['height'] = self.img_shape[0]
-                data_info['width'] = self.img_shape[1]
+                im = Image.open(img_path)
+                width, height = im.size
+
+                data_info['height'] = height
+                data_info['width'] = width
 
                 instance = dict(bbox=[], bbox_label=[], ignore_flag=0)
                 data_info['instances'] = [instance]
@@ -84,8 +89,10 @@ class DOTADataset(BaseDataset):
                 data_info['file_name'] = img_name
                 data_info['img_path'] = osp.join(self.data_prefix['img_path'],
                                                  img_name)
-                data_info['height'] = self.img_shape[0]
-                data_info['width'] = self.img_shape[1]
+                im = Image.open(data_info['img_path'])
+                width, height = im.size
+                data_info['height'] = height
+                data_info['width'] = width
 
                 instances = []
                 with open(txt_file) as f:
